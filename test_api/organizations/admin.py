@@ -1,21 +1,17 @@
 from django.contrib import admin
 
-from .models import Events, Organization
+from .models import Event, Organization
 
 
 @admin.register(Organization)
 class OrganizationsAdmin(admin.ModelAdmin):
-    # exclude = ['stores']
-    # list_display = ('name', 'category',)
-    # list_filter = ('category', )
-    # search_fields = ('name', 'id')
-    pass
+    exclude = ['description']
+    list_filter = ('title', )
+    search_fields = ('name', 'id')
 
 
-@admin.register(Events)
+@admin.register(Event)
 class EventsAdmin(admin.ModelAdmin):
-    # exclude = ['stores']
-    # list_display = ('name', 'category',)
-    # list_filter = ('category', )
-    # search_fields = ('name', 'id')
-    pass
+    list_display = ('name', 'category',)
+    list_filter = ('category', )
+    search_fields = ('name', 'id')
