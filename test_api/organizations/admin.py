@@ -5,13 +5,18 @@ from .models import Event, Organization
 
 @admin.register(Organization)
 class OrganizationsAdmin(admin.ModelAdmin):
-    exclude = ['description']
-    list_filter = ('title', )
-    search_fields = ('name', 'id')
+    exclude = ('description',)
+    list_filter = ('title',)
+    search_fields = ('title',)
 
 
 @admin.register(Event)
 class EventsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category',)
-    list_filter = ('category', )
-    search_fields = ('name', 'id')
+    list_display = (
+        'title',
+        'description',
+        'image',
+        'date',
+    )
+    list_filter = ('title',)
+    search_fields = ('title', 'date',)

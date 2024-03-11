@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+from organizations.models import Organization
+
 
 class User(AbstractUser):
     """Модель пользователя"""
@@ -16,6 +18,7 @@ class User(AbstractUser):
         null=True,
         verbose_name='Телефон'
     )
+    organizations = models.ManyToManyField(Organization, related_name='users')
 
     class Meta:
         verbose_name = 'Пользователь'

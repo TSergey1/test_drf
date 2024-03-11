@@ -1,4 +1,7 @@
+from django.contrib.auth import get_user_model
 from django.db import models
+
+User = get_user_model()
 
 
 class BaseModel(models.Model):
@@ -25,11 +28,9 @@ class Organization(BaseModel):
 
 class Event(BaseModel):
     """Модель мероприятия"""
-    organization = models.ForeignKey(
+    organization = models.ManyToManyField(
         'Organization',
-        on_delete=models.CASCADE,
-        related_name='organization',
-        verbose_name='Организация'
+        related_name='events',
     )
     image = models.ImageField(
         upload_to='еvent_images/',
