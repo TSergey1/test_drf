@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'djoser',
     'api',
-    'organizations',
+    'events',
     'users',
 ]
 
