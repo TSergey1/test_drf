@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  app:
+  web:
     build: .
     restart: always
     volumes:
@@ -23,10 +23,10 @@ services:
     container_name: task_worker
     build: .
     entrypoint: celery
-    command: -A cherry.celery.app worker -B --loglevel=DEBUG
+    command: -A test_api.celery.app worker --loglevel=DEBUG
     volumes:
-      - static_value:/cherry_app/static/
-      - media_value:/cherry_app/media/
+      - static_value:/test_api/static/
+      - media_value:/test_api/media/
     restart: always
     links:
       - redis
@@ -42,8 +42,8 @@ services:
     entrypoint: celery
     command: -A cherry.celery.app flower
     volumes:
-      - static_value:/cherry_app/static/
-      - media_value:/cherry_app/media/
+      - static_value:/test_api/static/
+      - media_value:/test_api/media/
     restart: always
     links:
       - redis
