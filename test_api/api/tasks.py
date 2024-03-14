@@ -1,6 +1,13 @@
+from time import sleep
+
 from celery import shared_task
+
+from api.serializer import EventSerializer
 
 
 @shared_task
-def send_feedback_email(name, email, message, image_file=None):
-    pass
+def save_event(data):
+    sleep(60)
+    serializer = EventSerializer(data=data)
+    serializer.is_valid(raise_exception=True)
+    serializer.create(serializer.validated_data)

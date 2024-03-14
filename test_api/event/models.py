@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils.html import mark_safe
 
 User = get_user_model()
 
@@ -25,6 +26,11 @@ class Organization(BaseModel):
     def __str__(self):
         return self.title
 
+    @property
+    def all_address(self):
+        """Полный адресс с посткодом"""
+        return f'{self.postcode} {self.address}'
+
 
 class Event(BaseModel):
     """Модель мероприятия"""
@@ -46,3 +52,13 @@ class Event(BaseModel):
 
     def __str__(self):
         return self.title
+
+    @property
+    def admin_image(self):
+        """Картинка для админки"""
+        try:
+            return mark_safe(
+                '<img src="{}" width="100" height="100">'.format(self.image.url)
+            )
+        except ValueError:
+            return None

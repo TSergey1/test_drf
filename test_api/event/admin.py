@@ -15,9 +15,9 @@ class EventsAdmin(admin.ModelAdmin):
     list_display = (
         'title',
         'description',
-        'image',
+        'admin_image',
         'date',
     )
-    readonly_fields = ('image',)
+    readonly_fields = ('admin_image',)
     list_filter = ('title',)
     search_fields = ('title', 'date',)
