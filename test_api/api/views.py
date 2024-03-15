@@ -6,9 +6,9 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
 from api.filters import EventFilter
-from api.serializer import (EventSerializer,
-                            OrganizationSerializer,
-                            UserSerializer)
+from api.serializers import (EventSerializer,
+                             OrganizationSerializer,
+                             UserSerializer)
 from api.tasks import save_event
 from event.models import Event, Organization
 

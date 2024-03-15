@@ -1,8 +1,5 @@
-from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.html import mark_safe
-
-User = get_user_model()
 
 
 class BaseModel(models.Model):
@@ -35,7 +32,7 @@ class Organization(BaseModel):
 class Event(BaseModel):
     """Модель мероприятия"""
     organization = models.ManyToManyField(
-        'Organization',
+        Organization,
         related_name='events',
     )
     image = models.ImageField(

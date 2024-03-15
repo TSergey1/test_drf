@@ -95,14 +95,6 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
-DJOSER = {
-    'TOKEN_MODEL': None,
-    'SERIALIZERS': {
-        'user_create': 'api.serializers.CustomUserCreateSerializer',
-        'user': 'api.serializers.CustomUserSerializer',
-        'current_user': 'api.serializers.CustomUserSerializer',
-    },
-}
 
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),

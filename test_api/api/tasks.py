@@ -2,7 +2,7 @@ from time import sleep
 
 from celery import shared_task
 
-from api.serializer import EventSerializer
+from api.serializers import EventSerializer
 
 
 @shared_task

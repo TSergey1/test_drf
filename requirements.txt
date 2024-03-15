@@ -10,4 +10,5 @@ gunicorn==21.2.0
 celery==5.2.7
 redis==4.5.1
 flower==1.2.0
-phonenumbers 8.13.32
+phonenumbers==8.13.32
+Pillow==10.1.0

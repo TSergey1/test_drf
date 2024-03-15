@@ -52,7 +52,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     organizations = models.ManyToManyField(Organization, related_name='users')
     objects = UserManager()
-    EMAIL_FIELD = 'email'
+    USERNAME_FIELD = 'email'
 
     class Meta:
         verbose_name = 'Пользователь'
