@@ -57,7 +57,9 @@ class Event(BaseModel):
         """Картинка для админки"""
         try:
             return mark_safe(
-                '<img src="{}" width="100" height="100">'.format(self.image.url)
+                '<img src="{}" width="100" height="100">'.format(
+                    self.image.url
+                )
             )
         except ValueError:
             return None
