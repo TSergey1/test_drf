@@ -36,6 +36,7 @@ class EventSerializer(serializers.ModelSerializer):
     """Сериализатор мероприятия."""
     organization = OrganizationSerializer(many=True, required=False)
     image = Base64ImageField(required=False)
+    date = serializers.DateTimeField(input_formats=['%d.%m.%Y %H:%M'])
 
     class Meta:
         model = Event
@@ -44,9 +45,6 @@ class EventSerializer(serializers.ModelSerializer):
                   'image',
                   'date',
                   'organization')
-        extra_kwargs = {
-            'date': {'required': False},
-        }
 
 
 class UserSerializer(serializers.ModelSerializer):

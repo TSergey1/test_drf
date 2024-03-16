@@ -22,13 +22,13 @@ class EventViewSet(viewsets.ModelViewSet):
     serializer_class = EventSerializer
     filter_backends = (DjangoFilterBackend, OrderingFilter, SearchFilter)
     filterset_class = EventFilter
-    ordering_fields = ('date')
+    ordering_fields = ('date',)
     search_fields = ('title',)
     page_size_query_param = 'limit'
 
     def create(self, request):
-        save_event(request.data)
-        return Response({'message': 'Мероприятие добавляется'},
+        serializer_data = save_event(request.data)
+        return Response(serializer_data,
                         status=status.HTTP_102_PROCESSING)
 
 

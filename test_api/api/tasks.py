@@ -9,6 +9,6 @@ from api.serializers import EventSerializer
 def save_event(data: dict):
     sleep(2)
     serializer = EventSerializer(data=data)
-    if serializer.is_valid():
-        # serializer.is_valid(raise_exception=True)
-        serializer.create(serializer.validated_data)
+    serializer.is_valid(raise_exception=True)
+    serializer.create(serializer.validated_data)
+    return serializer.data

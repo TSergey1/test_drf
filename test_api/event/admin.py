@@ -18,11 +18,17 @@ class OrganizationsAdmin(admin.ModelAdmin):
 
 @admin.register(Event)
 class EventsAdmin(admin.ModelAdmin):
+    fields = (
+        'title',
+        'description',
+        'admin_image',
+        'date'
+    )
     list_display = (
         'title',
         'description',
         'admin_image',
-        'date',
+        'date'
     )
     readonly_fields = ('admin_image',)
     list_filter = ('title',)

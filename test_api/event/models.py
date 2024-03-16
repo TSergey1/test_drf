@@ -42,7 +42,7 @@ class Event(BaseModel):
         blank=True,
         null=True,
     )
-    date = models.DateTimeField('Дата мероприятия', blank=True)
+    date = models.DateTimeField('Дата мероприятия')
 
     class Meta:
         ordering = ('date',)
