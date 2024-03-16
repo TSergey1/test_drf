@@ -26,9 +26,8 @@ class Organization(BaseModel):
     @property
     def all_address(self):
         """Полный адресс с посткодом"""
-        if self.postcode and self.address:
-            return f'{self.postcode} {self.address}'
-        return self.postcode or self.address
+        return f'{self.postcode} {self.address}'
+    all_address.fget.short_description = 'Адресс'
 
 
 class Event(BaseModel):
@@ -63,3 +62,4 @@ class Event(BaseModel):
             )
         except ValueError:
             return None
+    admin_image.fget.short_description = 'Картинка'

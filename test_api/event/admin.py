@@ -16,19 +16,24 @@ class OrganizationsAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
 
+class OrganizationInline(admin.TabularInline):
+    model = Organization.events.through
+
+
 @admin.register(Event)
 class EventsAdmin(admin.ModelAdmin):
+    inlines = (OrganizationInline,)
     fields = (
         'title',
         'description',
         'admin_image',
-        'date'
+        'date',
     )
     list_display = (
         'title',
         'description',
         'admin_image',
-        'date'
+        'date',
     )
     readonly_fields = ('admin_image',)
     list_filter = ('title',)

@@ -28,8 +28,14 @@ class OrganizationSerializer(serializers.ModelSerializer):
         model = Organization
         fields = ('title',
                   'description',
+                  'address',
+                  'postcode',
                   'all_address',
                   'users')
+        extra_kwargs = {
+            'address': {'write_only': True, },
+            'postcode': {'write_only': True, },
+        }
 
 
 class EventSerializer(serializers.ModelSerializer):
