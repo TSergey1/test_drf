@@ -11,4 +11,4 @@ def save_event(data: dict):
     serializer = EventSerializer(data=data)
     serializer.is_valid(raise_exception=True)
     serializer.create(serializer.validated_data)
-    return serializer.data
+    return data
