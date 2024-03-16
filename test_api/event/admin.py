@@ -33,3 +33,6 @@ class EventsAdmin(admin.ModelAdmin):
     readonly_fields = ('admin_image',)
     list_filter = ('title',)
     search_fields = ('title', 'date',)
+
+
+admin.site.empty_value_display = 'Не задано'

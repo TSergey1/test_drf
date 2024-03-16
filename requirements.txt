@@ -12,3 +12,4 @@ redis==4.5.1
 flower==1.2.0
 phonenumbers==8.13.32
 Pillow==10.1.0
+drf-yasg==1.21.7
