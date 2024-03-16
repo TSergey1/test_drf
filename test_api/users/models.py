@@ -72,7 +72,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     def _generate_jwt_token(self):
         """
         Генерирует веб-токен JSON, в котором хранится идентификатор этого
-        пользователя, срок действия токена составляет 1 день от создания
+        пользователя
         """
         dt = datetime.now() + timedelta(days=1)
 

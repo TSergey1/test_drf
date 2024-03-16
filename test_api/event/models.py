@@ -26,7 +26,9 @@ class Organization(BaseModel):
     @property
     def all_address(self):
         """Полный адресс с посткодом"""
-        return f'{self.postcode} {self.address}'
+        if self.postcode and self.address:
+            return f'{self.postcode} {self.address}'
+        return self.postcode or self.address
 
 
 class Event(BaseModel):
@@ -40,7 +42,7 @@ class Event(BaseModel):
         blank=True,
         null=True,
     )
-    date = models.DateTimeField('Дата мероприятия')
+    date = models.DateTimeField('Дата мероприятия', blank=True)
 
     class Meta:
         ordering = ('date',)

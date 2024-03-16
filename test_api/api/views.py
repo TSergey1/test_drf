@@ -27,7 +27,7 @@ class EventViewSet(viewsets.ModelViewSet):
     page_size_query_param = 'limit'
 
     def create(self, request):
-        save_event.delay(request.data)
+        save_event(request.data)
         return Response({'message': 'Мероприятие добавляется'},
                         status=status.HTTP_102_PROCESSING)
 

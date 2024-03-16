@@ -5,7 +5,13 @@ from .models import Event, Organization
 
 @admin.register(Organization)
 class OrganizationsAdmin(admin.ModelAdmin):
-    exclude = ('description',)
+    fields = (
+        'title',
+        'description',
+        'postcode',
+        'address'
+    )
+    list_display = ('title', 'all_address')
     list_filter = ('title',)
     search_fields = ('title',)
 

@@ -27,8 +27,9 @@ class OrganizationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Organization
         fields = ('title',
+                  'description',
                   'all_address',
-                  'description')
+                  'users')
 
 
 class EventSerializer(serializers.ModelSerializer):
@@ -42,8 +43,10 @@ class EventSerializer(serializers.ModelSerializer):
                   'description',
                   'image',
                   'date',
-                  'users',
                   'organization')
+        extra_kwargs = {
+            'date': {'required': False},
+        }
 
 
 class UserSerializer(serializers.ModelSerializer):

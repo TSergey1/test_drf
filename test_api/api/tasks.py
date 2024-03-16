@@ -5,9 +5,10 @@ from celery import shared_task
 from api.serializers import EventSerializer
 
 
-@shared_task
-def save_event(data):
-    sleep(60)
+# @shared_task
+def save_event(data: dict):
+    sleep(2)
     serializer = EventSerializer(data=data)
-    serializer.is_valid(raise_exception=True)
-    serializer.create(serializer.validated_data)
+    if serializer.is_valid():
+        # serializer.is_valid(raise_exception=True)
+        serializer.create(serializer.validated_data)
