@@ -25,11 +25,9 @@ class EventViewSet(viewsets.ModelViewSet):
     page_size_query_param = 'limit'
 
     def create(self, request):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        save_event.delay(serializer.validated_data)
+        save_event.delay(request.data)
         return Response({'massage': 'Процесс создания...'},
-                        status=status.HTTP_201_CREATED)
+                        status=status.HTTP_102_PROCESSING)
 
 
 class OrganizationViewSet(viewsets.ModelViewSet):
