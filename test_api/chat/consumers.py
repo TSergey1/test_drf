@@ -15,11 +15,6 @@ class ChatConsumer(WebsocketConsumer):
             'message': 'Присоединился к каналу'
         }))
 
-    def disconnect(self, close_code: int):
-        async_to_sync(self.channel_layer.group_discard)(
-            'chat', self.channel_name
-        )
-
     def receive(self, text_data: dict):
         text_data_json = json.loads(text_data)
 
@@ -28,6 +23,11 @@ class ChatConsumer(WebsocketConsumer):
                 'type': 'chat.message',
                 'message': text_data_json['message']
             }
+        )
+
+    def disconnect(self, close_code: int):
+        async_to_sync(self.channel_layer.group_discard)(
+            'chat', self.channel_name
         )
 
     def chat_message(self, event: dict):

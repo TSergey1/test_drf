@@ -27,7 +27,7 @@ class Organization(BaseModel):
     def all_address(self):
         """Полный адресс с посткодом"""
         return f'{self.postcode} {self.address}'
-    all_address.fget.short_description = 'Адресс'
+    # all_address.fget.short_description = 'Адресс'
 
 
 class Event(BaseModel):
@@ -62,4 +62,4 @@ class Event(BaseModel):
             )
         except ValueError:
             return None
-    admin_image.fget.short_description = 'Картинка'
+    # admin_image.fget.short_description = 'Картинка'

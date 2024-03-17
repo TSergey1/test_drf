@@ -7,8 +7,7 @@ python-dotenv==1.0.0
 django-filter==23.3
 djoser==2.2.2
 gunicorn==21.2.0
-celery==5.2.7
-redis==4.5.1
+celery[redis]==5.3.6
 flower==1.2.0
 phonenumbers==8.13.32
 Pillow==10.1.0

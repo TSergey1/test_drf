@@ -1,6 +1,12 @@
 from django.contrib import admin
 
-from .models import Event, Organization
+from event.models import Event, Organization
+from users.models import User
+
+
+class UserInline(admin.TabularInline):
+    model = User.organizations.through
+    extra = 2
 
 
 @admin.register(Organization)
@@ -11,6 +17,7 @@ class OrganizationsAdmin(admin.ModelAdmin):
         'postcode',
         'address'
     )
+    inlines = (UserInline,)
     list_display = ('title', 'all_address')
     list_filter = ('title',)
     search_fields = ('title',)
@@ -18,6 +25,7 @@ class OrganizationsAdmin(admin.ModelAdmin):
 
 class OrganizationInline(admin.TabularInline):
     model = Organization.events.through
+    extra = 2
 
 
 @admin.register(Event)

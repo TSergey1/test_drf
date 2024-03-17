@@ -10,7 +10,7 @@ from channels.middleware import BaseMiddleware
 User = get_user_model()
 
 
-class AuthenticatedMiddleware(BaseMiddleware):
+class ChatMiddleware(BaseMiddleware):
     """Проверка аутентифицировации пользователя перед соеденением вебсокетов"""
     async def __call__(self, scope, receive, send):
         headers = dict(scope["headers"])
