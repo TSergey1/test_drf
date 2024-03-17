@@ -1,9 +1,8 @@
+from api.views import CreateUserViewSet, EventViewSet, OrganizationViewSet
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import (TokenObtainPairView,
                                             TokenRefreshView)
-
-from api.views import CreateUserViewSet, EventViewSet, OrganizationViewSet
 
 app_name = 'api'
 

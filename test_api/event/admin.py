@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 from event.models import Event, Organization
 from users.models import User
 

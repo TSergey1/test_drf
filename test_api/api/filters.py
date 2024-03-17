@@ -1,5 +1,4 @@
 from django_filters import DateTimeFilter, filterset
-
 from event.models import Event
 
 

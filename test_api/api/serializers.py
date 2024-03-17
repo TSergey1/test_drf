@@ -1,10 +1,10 @@
 import base64
-import phonenumbers
-from django.core.files.base import ContentFile
-from django.contrib.auth import get_user_model
-from rest_framework import serializers
 
+import phonenumbers
+from django.contrib.auth import get_user_model
+from django.core.files.base import ContentFile
 from event.models import Event, Organization
+from rest_framework import serializers
 
 User = get_user_model()
 

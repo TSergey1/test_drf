@@ -1,16 +1,14 @@
+from api.filters import EventFilter
+from api.serializers import (EventSerializer, OrganizationSerializer,
+                             UserSerializer)
+from api.tasks import save_event
 from django.contrib.auth import get_user_model
 from django_filters.rest_framework import DjangoFilterBackend
+from event.models import Event, Organization
 from rest_framework import status, viewsets
 from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
-
-from api.filters import EventFilter
-from api.serializers import (EventSerializer,
-                             OrganizationSerializer,
-                             UserSerializer)
-from api.tasks import save_event
-from event.models import Event, Organization
 
 User = get_user_model()
 

@@ -1,11 +1,10 @@
+from asgiref.sync import sync_to_async
+from channels.middleware import BaseMiddleware
+from channels.security.websocket import WebsocketDenier
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from asgiref.sync import sync_to_async
-
-from jwt import InvalidTokenError, decode as jwt_decode
-from channels.security.websocket import WebsocketDenier
-from channels.middleware import BaseMiddleware
-
+from jwt import InvalidTokenError
+from jwt import decode as jwt_decode
 
 User = get_user_model()
 
