@@ -73,7 +73,10 @@ POST .../api/events/
 | `image` | `string` | **Не обязательно**. Картинка ф формате base64  |
 
 ### Вывод списка мероприятий
-GET .../api/events/
+GET .../api/events/?search=$(query_search)
+                                     &ordering=$(ordering_fields)
+                                     &limit=$(query_limit)
+                                     &$(filter_method)=$(filter_data)
 
 ### Вывод  мероприятия
 GET .../api/events/$(id)
@@ -85,10 +88,18 @@ GET .../api/events/$(id)
 ```
 git clone git@github.com:TSergey1/test_api.git
 ```
-### Запускаем Docker-compose:
+### Запускаем проект:
 ```
 docker-compose up
 ```
 
-### Над проектом работал:
-* Сергей Тыртычный https://github.com/TSergey1
+## Вебсокет чат
+Чат - ws://0.0.0.0:8000/chat/
+
+Подключение по JWT token
+
+Передача сообщений в формате JSON
+{
+    "user": "user@user.ru",
+    "message": "Текст сообщения"
+}
