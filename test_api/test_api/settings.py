@@ -8,7 +8,7 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 DEBUG = os.environ.get('DEBUG', False) == 'True'
 
@@ -17,6 +17,7 @@ ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(', ')
 AUTH_USER_MODEL = 'users.User'
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -25,7 +26,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_filters',
-    'daphne',
     'channels',
     'api',
     'event',
@@ -113,7 +113,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR.joinpath('media')
 
-REDIS_HOST = os.environ.get('REDIS_SRC_HOST', 'redis_src')
+REDIS_HOST = os.environ.get('REDIS_SRC_HOST', 'redis')
 REDIS_PORT = os.environ.get('REDIS_SRC_PORT', '6379')
 CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
@@ -122,6 +122,7 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_IMPORTS = ('api.tasks',)
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=2),
@@ -133,11 +134,12 @@ SIMPLE_JWT = {
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
 }
 
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [('redis', '6379')],
+            "hosts": [(REDIS_HOST, REDIS_PORT)],
         },
     },
 }

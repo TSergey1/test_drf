@@ -26,9 +26,9 @@ class EventViewSet(viewsets.ModelViewSet):
     search_fields = ('title',)
     page_size_query_param = 'limit'
 
-    def create(self, request):
-        serializer_data = save_event(request.data)
-        return Response(serializer_data,
+    def create(self, request, *args, **kwargs):
+        save_event.delay(request.data, *args, **kwargs)
+        return Response({'massage': 'Процесс создания...'},
                         status=status.HTTP_102_PROCESSING)
 
 
