@@ -12,7 +12,7 @@ class BaseModel(models.Model):
 
 class Organization(BaseModel):
     """Модель организации"""
-    address = models.CharField('Адресс', max_length=255)
+    address = models.CharField('Адрес', max_length=255)
     postcode = models.CharField('Индекс', max_length=6)
 
     class Meta:
